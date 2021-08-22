@@ -11,18 +11,16 @@ weatherForm.addEventListener('submit', (e) => {
   messageOne.textContent = '';
   messageTwo.textContent = '';
 
-  fetch('http://localhost:3000/weather?address=' + location).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          console.log(data.error);
+  fetch('/weather?address=' + location).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        console.log(data.error);
 
-          messageTwo.textContent = data.error;
-        } else {
-          console.log(`Pocasi v ${data.location} je ${data.forecast}`);
-          messageOne.textContent = `Pocasi v ${data.location} je ${data.forecast}`;
-        }
-      });
-    }
-  );
+        messageTwo.textContent = data.error;
+      } else {
+        console.log(`Pocasi v ${data.location} je ${data.forecast}`);
+        messageOne.textContent = `Pocasi v ${data.location} je ${data.forecast}`;
+      }
+    });
+  });
 });
