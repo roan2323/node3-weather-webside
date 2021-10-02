@@ -15,12 +15,12 @@ const forecast = (latitude, longtitude, callback) => {
     } else {
       callback(
         undefined,
-        body.current.weather_descriptions[0] +
-          '. Venku je aktuálně ' +
-          body.current.temperature +
-          ' stupňů. A je ' +
-          body.current.precip * 100 +
-          ' % šance na déšť.'
+        `${body.current.weather_descriptions[0]}. Venku je aktuálně ${
+          body.current.temperature
+        } stupňů. A je
+        ${body.current.precip * 100}% šance na déšť. Pocitová teplota je ${
+          body.current.feelslike
+        } stupňů.`
       );
     }
   });
